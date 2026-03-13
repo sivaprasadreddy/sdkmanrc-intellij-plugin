@@ -8,9 +8,9 @@ An IntelliJ IDEA Plugin to provide auto-completion in `.sdkmanrc` file.
 > Supported SDKs: java, maven, mvnd, gradle, kotlin, groovy, scala
 
 ## Installation
-This plugin is not yet uploaded to the JetBrains plugin repository. 
+This plugin is published in the JetBrains Marketplace https://plugins.jetbrains.com/plugin/30654-sdkman.
 
-You can install it manually by downloading the plugin from the [releases page](https://github.com/sivaprasadreddy/sdkmanrc-intellij-plugin/releases) and installing it via the IntelliJ IDEA plugin manager.
+You can also install it manually by downloading the plugin from the [releases page](https://github.com/sivaprasadreddy/sdkmanrc-intellij-plugin/releases) and installing it via the IntelliJ IDEA plugin manager.
 
 1. Go to Settings → Plugins
 2. Click on the cog icon and select the "Install Plugin from Disk" option
