@@ -34,17 +34,32 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Plugin version: $VERSION"
 
-      - name: Build plugin
-        run: ./gradlew buildPlugin
+      - name: Build and Sign Plugin
+        run: ./gradlew signPlugin
+
+      - name: Find signed artifact
+        id: artifact
+        run: |
+          ZIP=$(find build/distributions -name '*-signed.zip' | head -1)
+          echo "path=$ZIP" >> "$GITHUB_OUTPUT"
+
+      # Publish the plugin to JetBrains Marketplace
+      - name: Publish Plugin
+        env:
+          PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+          CERTIFICATE_CHAIN: ${{ secrets.CERTIFICATE_CHAIN }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          PRIVATE_KEY_PASSWORD: ${{ secrets.PRIVATE_KEY_PASSWORD }}
+        run: ./gradlew publishPlugin
 
       - name: Upload release asset
         uses: softprops/action-gh-release@v2
         with:
-          files: ./build/distributions/sdkmanrc-intellij-plugin-${{ steps.get_version.outputs.version }}.zip
+          files: ${{ steps.artifact.outputs.path }}
 
       - name: Generate SHA256 checksum
         run: |
-          sha256sum build/distributions/sdkmanrc-intellij-plugin-${{ steps.get_version.outputs.version }}.zip > checksum.txt
+          sha256sum ${{ steps.artifact.outputs.path }} > checksum.txt
           cat checksum.txt
 
       - name: Upload checksum

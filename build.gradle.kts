@@ -1,6 +1,6 @@
 plugins {
-  id("java")
-  id("org.jetbrains.intellij.platform") version "2.12.0"
+    id("java")
+    id("org.jetbrains.intellij.platform") version "2.12.0"
 }
 
 group = "dev.sivalabs"
@@ -13,31 +13,44 @@ java {
 }
 
 repositories {
-  mavenCentral()
+    mavenCentral()
 
-  intellijPlatform {
-    defaultRepositories()
-  }
+    intellijPlatform {
+        defaultRepositories()
+    }
 }
 
 dependencies {
-  intellijPlatform {
-    intellijIdea("2025.1.7")
-      bundledPlugin("com.intellij.java")
-  }
+    intellijPlatform {
+        intellijIdea("2025.1.7")
+        bundledPlugin("com.intellij.java")
+    }
 }
 
 intellijPlatform {
-  buildSearchableOptions = false
+    buildSearchableOptions = false
 
-  pluginConfiguration {
-    ideaVersion {
-      sinceBuild = "251"
+    pluginConfiguration {
+        ideaVersion {
+            sinceBuild = "251"
+        }
     }
-  }
-  pluginVerification  {
-    ides {
-      recommended()
+
+    pluginVerification {
+        ides {
+            recommended()
+        }
     }
-  }
+}
+
+tasks {
+    signPlugin {
+        certificateChain = System.getenv("CERTIFICATE_CHAIN")
+        privateKey = System.getenv("PRIVATE_KEY")
+        password = System.getenv("PRIVATE_KEY_PASSWORD")
+    }
+
+    publishPlugin {
+        token.set(System.getenv("PUBLISH_TOKEN"))
+    }
 }
