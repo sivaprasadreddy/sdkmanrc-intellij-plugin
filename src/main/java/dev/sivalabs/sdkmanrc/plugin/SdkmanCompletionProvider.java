@@ -39,9 +39,11 @@ public class SdkmanCompletionProvider extends CompletionProvider<CompletionParam
                     result.addElement(LookupElementBuilder.create(k)));
         } else {
             String key = line.substring(0, line.indexOf("=")).trim();
+            String prefix = line.substring(line.indexOf("=") + 1);
             List<String> versions = SdkmanService.getVersions(key);
+            CompletionResultSet filteredResult = result.withPrefixMatcher(prefix);
             versions.forEach(v ->
-                    result.addElement(LookupElementBuilder.create(v)));
+                    filteredResult.addElement(LookupElementBuilder.create(v)));
         }
     }
 }
