@@ -1,0 +1,34 @@
+<idea-plugin>
+    <!-- Unique id for this plugin. -->
+    <id>dev.sivalabs.sdkmanrc.plugin</id>
+    <!-- Text to display as the name on Settings | Plugin page -->
+    <name>SDKMAN</name>
+    <!-- Text to display as company information on Settings | Plugin page -->
+    <vendor url="https://sivalabs.dev">SivaLabs</vendor>
+
+    <!-- Product and plugin compatibility requirements -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
+
+    <!-- Text to display as a description on the Settings | Plugin page -->
+    <description>
+        <![CDATA[
+            Provides autocompletion in .sdkmanrc file.
+        ]]>
+    </description>
+    <change-notes>
+        <![CDATA[
+      <ul>
+        <li><b>1.0.0</b> Initial Release.</li>
+      </ul>
+    ]]>
+    </change-notes>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <completion.contributor
+            language="TEXT"
+            implementationClass="dev.sivalabs.sdkmanrc.plugin.SdkmanCompletionContributor"
+        />
+    </extensions>
+
+</idea-plugin>

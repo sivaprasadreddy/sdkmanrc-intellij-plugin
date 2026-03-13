@@ -1,0 +1,43 @@
+plugins {
+  id("java")
+  id("org.jetbrains.intellij.platform") version "2.12.0"
+}
+
+group = "dev.sivalabs"
+version = "0.0.1"
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
+
+repositories {
+  mavenCentral()
+
+  intellijPlatform {
+    defaultRepositories()
+  }
+}
+
+dependencies {
+  intellijPlatform {
+    intellijIdea("2025.1.7")
+      bundledPlugin("com.intellij.java")
+  }
+}
+
+intellijPlatform {
+  buildSearchableOptions = false
+
+  pluginConfiguration {
+    ideaVersion {
+      sinceBuild = "251"
+    }
+  }
+  pluginVerification  {
+    ides {
+      recommended()
+    }
+  }
+}
