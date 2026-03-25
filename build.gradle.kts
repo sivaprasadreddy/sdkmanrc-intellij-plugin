@@ -47,6 +47,8 @@ tasks {
     signPlugin {
         certificateChain = System.getenv("CERTIFICATE_CHAIN")
         privateKey = System.getenv("PRIVATE_KEY")
+        //certificateChainFile = file("certs/chain.crt")
+        //privateKeyFile = file("certs/private.pem")
         password = System.getenv("PRIVATE_KEY_PASSWORD")
     }
 
