@@ -17,7 +17,9 @@ public class SdkmanCompletionProvider extends CompletionProvider<CompletionParam
             "gradle",
             "kotlin",
             "groovy",
-            "scala"
+            "scala",
+            "springboot",
+            "quarkus"
     );
 
     @Override

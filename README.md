@@ -5,7 +5,7 @@ An IntelliJ IDEA Plugin to provide auto-completion in `.sdkmanrc` file.
 
 > [!NOTE]
 > Currently, only a predefined set of SDKs are supported and shows only the locally downloaded versions.
-> Supported SDKs: java, maven, mvnd, gradle, kotlin, groovy, scala
+> Supported SDKs: java, maven, mvnd, gradle, kotlin, groovy, scala, springboot, quarkus
 
 ## Installation
 This plugin is published in the JetBrains Marketplace https://plugins.jetbrains.com/plugin/30654-sdkman.

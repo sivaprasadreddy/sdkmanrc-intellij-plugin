@@ -20,6 +20,7 @@
         <![CDATA[
       <ul>
         <li><b>1.0.0</b> Initial Release.</li>
+        <li><b>1.0.1</b> Add springboot and quarkus SDKs</li>
       </ul>
     ]]>
     </change-notes>

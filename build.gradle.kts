@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "dev.sivalabs"
-version = "0.0.1"
+version = "1.0.1"
 
 java {
     toolchain {
